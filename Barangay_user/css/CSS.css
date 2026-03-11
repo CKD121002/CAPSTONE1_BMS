@@ -1,0 +1,781 @@
+/* GLOBAL STYLE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Sidebar main */
+.sidebar {
+  width: 250px;
+  background: #3b62d1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: visible;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Sidebar Header - Keeps burger and logo aligned */
+.sidebar-header {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.burgertab {
+  position: absolute;
+  top: 20px;
+  right: -30px; /* Adjust this to control how much it sticks out */
+  width: 50px;
+  height: 50px;
+  background: #cbd5e1; /* Light grey/blue background like your image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%; /* Makes it a circle */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+.burgertab i {
+  color: #3b62d1; /* Blue icon to contrast the light tab */
+  font-size: 20px;
+  margin-left: 5px; /* Offset slightly to look centered on the edge */
+}
+
+/* Logo container styling */
+.logosidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logosidebar img {
+  width: 80px;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+/* Sidebar collapsed state for Header items */
+.sidebar.collapsed .sidebar-header {
+  padding: 15px 5px;
+}
+
+.sidebar.collapsed .burgericon {
+  align-self: center;
+  padding-left: 0;
+}
+
+.sidebar.collapsed .logosidebar img {
+  width: 40px;
+}
+
+/* Navigation links */
+.navlinks {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.navlinks a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 25px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  font-size: 14px;
+  width: 100%; /* Makes the link fill the sidebar width */
+  transition: all 0.2s ease;
+}
+
+.navlinks a.active {
+  background: #007bff; /* Bright blue match for Admin Dashboard */
+  color: white;
+  border-left: none;
+}
+
+.navlinks a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar.collapsed .navlinks span {
+  display: none;
+}
+/* When Sidebar is collapsed, pull maincontent back */
+.sidebar.collapsed + .maincontent {
+  margin-left: 70px;
+  width: calc(100% - 70px);
+}
+/* MAIN CONTENT */
+
+.maincontent {
+  margin-left: 250px; /* Sidebar width */
+  flex-grow: 1; /* This pushes the content to the far right */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  background: #f4f7fb;
+  width: calc(100% - 250px); /* Ensures it doesn't overflow or underflow */
+}
+
+.contentwrapper {
+  flex: 1;
+  padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+/* HEADER */
+
+h1 {
+  color: #3b62d1;
+  font-size: 36px;
+}
+
+h2 {
+  color: #3b62d1;
+  margin-bottom: 30px;
+}
+
+/* DASHBOARD CARDS */
+
+.boxcontainer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.usercardcontainer {
+  flex: 1;
+  text-decoration: none;
+  min-width: 250px;
+}
+
+.document,
+.tracking,
+.alert {
+  background: white;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+
+.document:hover,
+.tracking:hover,
+.alert:hover {
+  transform: translateY(-5px);
+}
+
+/* ICON */
+
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* RECENT REQUEST */
+
+.recentrequests .requestcard {
+  background: white;
+  border: 1px solid #3b62d1;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* Individual request inside the single box */
+.requestrow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.requestrow:last-child {
+  border-bottom: none;
+}
+
+.requestcard h4 {
+  font-size: 15px;
+}
+
+/* STATUS COLORS */
+
+.status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* FOOTER */
+
+.footer {
+  width: 100%;
+  background: #3b62d1;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  /* Removed position: fixed to make it follow content */
+}
+
+.footercenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.footertext {
+  font-size: 12px;
+}
+
+/* REquest Page*/
+.requestgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.requestcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+
+  padding: 40px 30px;
+  gap: 15px;
+
+  text-decoration: none; /* removes underline */
+  color: #333; /* removes blue link color */
+
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Remove link color for all states */
+.requestcard:link,
+.requestcard:visited,
+.requestcard:active {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Hover animation */
+.requestcard:hover {
+  transform: translateY(-8px);
+  border-color: #3b62d1;
+  box-shadow: 0 12px 24px rgba(0, 51, 102, 0.15);
+}
+
+/* ICON */
+.requestboxicon {
+  width: 100px;
+  height: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.requestboxicon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* TEXT */
+.requestboxtext h3 {
+  color: #3b62d1;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.requestboxtext p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Ensure text inside links does not turn blue */
+.requestcard h3,
+.requestcard p {
+  text-decoration: none;
+}
+
+/* Forms*/
+.formsection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 30px;
+  align-items: flex-start; /* Ensures columns stay aligned at the top */
+}
+
+.formgroup {
+  flex: 1;
+  min-width: 350px; /* Slightly wider for better balance on desktop */
+}
+
+.formgroup h3 {
+  color: #3b62d1;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 1px solid #eee; /* Adds a clean divider under titles */
+  padding-bottom: 5px;
+}
+
+/* Standardize ALL inputs including the dropdown (select) */
+.formgroup input,
+.formgroup textarea,
+.formgroup select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px; /* More space between fields to reduce "messy" feel */
+  border: 1px solid #3b62d1;
+  border-radius: 8px; /* Slightly rounder to match your history cards */
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+/* Fix for Select dropdown height */
+.formgroup select {
+  height: 45px;
+  cursor: pointer;
+}
+
+.formgroup input:focus,
+.formgroup textarea:focus,
+.formgroup select:focus {
+  outline: none;
+  border-color: #3b62d1;
+  box-shadow: 0 0 5px rgba(0, 51, 102, 0.2);
+}
+
+/* --- Buttons --- */
+.buttoncontainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; /* Aligns buttons to the right for better flow */
+  gap: 15px;
+}
+
+.btnsubmit,
+.btncancel {
+  padding: 12px 35px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btnsubmit {
+  background: #3b62d1;
+  color: white;
+}
+
+.btnsubmit:hover {
+  background: #3b62d1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 51, 102, 0.2);
+}
+
+.btncancel {
+  background: #e0e0e0;
+  color: #555;
+}
+
+.btncancel:hover {
+  background: #d0d0d0;
+}
+
+/* --- Clean Upload Box --- */
+.uploadbox {
+  border: 1px solid #003366; /* Match the other inputs */
+  padding: 20px;
+  background-color: #ffffff; /* Light grey to distinguish the area */
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uploadbox p {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  text-align: left; /* Aligns with input text */
+}
+
+/* Removes default file input styling to look cleaner */
+.uploadbox input[type="file"] {
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+/*PROFILE*/
+.profilebg {
+  background-color: #000;
+}
+
+.profiletitle {
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.profilecard {
+  background: #ffffff;
+  border: 1px solid #333;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.profileheader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatarcontainer {
+  flex-shrink: 0;
+}
+
+.profilepic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #3b62d1;
+}
+
+.userheadline h2 {
+  color: #333;
+  margin: 0;
+}
+
+.userheadline p {
+  color: #888;
+  font-size: 14px;
+}
+
+.btneditprofile {
+  margin-left: auto;
+  background-color: #3b62d1;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btneditprofile:hover {
+  background-color: #3b62d1;
+}
+
+.infotext {
+  font-size: 16px;
+  color: #333;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/*EDIT PROFILE*/
+/* DETAILS SECTION */
+.detailssection {
+  background: #ffffff;
+  border: 1px solid #333;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.detailssection h3 {
+  color: #3b62d1;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f4f7f9;
+  padding-bottom: 10px;
+}
+
+/* PROFILE FORM LABELS */
+.profileform label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #3b62d1;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+/* INPUT FIELDS */
+.profileform input[type="text"],
+.profileform input[type="email"],
+.profileform input[type="date"],
+.profileform textarea,
+.profileform select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+/* TEXTAREA */
+.profileform textarea {
+  resize: none;
+}
+
+/* PROFILE PICTURE SECTION */
+.profilepicsection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.profilepicsection .avatarcontainer {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #3b62d1;
+  flex-shrink: 0;
+}
+
+.profilepicsection .avatarcontainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profilepicsection input[type="file"] {
+  font-size: 12px;
+  color: #333;
+}
+
+/* FORM GROUPS */
+.formgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* PROFILE ACTIONS BUTTONS */
+.profileactions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: flex-end;
+}
+
+.btnsubmit {
+  background-color: #3b62d1;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btnsubmit:hover {
+  background-color: #004080;
+}
+
+.btncancel {
+  background-color: #ccc;
+  color: #333;
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+}
+
+/* PASSWORD SECTION */
+.passwordsection {
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 2px solid #f4f7f9;
+}
+
+.passwordsection h3 {
+  color: #003366;
+  margin-bottom: 5px;
+}
+
+.formhint {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.passwordsection .formsection {
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.passwordsection input[type="password"] {
+  background-color: #fafafa;
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/*History */
+.historybg {
+  background-color: #f4f7f9;
+}
+
+.historytitle {
+  color: #3b62d1;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+/* Filter Buttons*/
+.filtercontainer {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.filterbtn {
+  background: #3b62d1;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.filterbtn.active {
+  background: #002244;
+}
+
+.historygrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.historycard {
+  background: white;
+  border: 1px solid #999;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.cardheader h3 {
+  color: #3b62d1;
+  font-size: 18px;
+  max-width: 60%;
+}
+
+.cardbody p {
+  color: #333;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+/* History Status */
+.complete {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: #4caf50;
+}
+.pending {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: #ffc107;
+  color: #333;
+}
+.cancelled {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: #f44336;
+}
