@@ -2,10 +2,7 @@
 session_start();
 include 'config.php';
 
-if(!isset($_SESSION['user'])){
-    header("Location: login.php");
-    exit();
-}
+
 
 /* ADD MEDICINE RECORD */
 /* ADD MEDICINE RECORD */
@@ -68,36 +65,25 @@ $conn->query("DELETE FROM resident_medicine WHERE id=$id");
 
 <title>Medicine Tracker</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/sidebar.css">
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/medicine_tracker.css">
 
-<link rel="stylesheet" href="style.css">
-
-<style>
-
-.low-medicine{
-color:red;
-font-weight:bold;
-}
-
-.normal-medicine{
-color:green;
-font-weight:bold;
-}
-
-
-</style>
 
 </head>
 
 <body>
-
-<div class="content">
-
 <?php include 'sidebar.php'; ?>
+
+<div class="main-wrapper">
+
 <?php include 'header.php'; ?>
 
-<div class="container mt-4">
+<div class="content">
 
 
 <h3>Barangay Medicine Tracker</h3>
@@ -277,6 +263,6 @@ Delete
 </div>
 
 </div>
-
+<script src="style/sidebar.js"></script>
 </body>
 </html>

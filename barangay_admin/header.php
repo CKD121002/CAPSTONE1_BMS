@@ -3,15 +3,26 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-
+<link rel="stylesheet" href="css/header.css">
 <div class="topbar">
 
     <!-- LEFT -->
-    <div class="topbar-left">
-        <h2 class="system-title">
-            <i class="fa fa-city"></i> Barangay Management System
-        </h2>
-    </div>
+   <div class="logo-area">
+            <img src="/BMS/IMAGES/silogo.png" alt="San Isidro Logo" class="logo1">
+          <a><i class="wow"></i>
+<span>
+<div class="user-title">
+    <?php
+    if(isset($_SESSION['username'])){
+        echo "Welcome, " . $_SESSION['username'];
+    } else {
+        echo "Welcome, Guest";
+    }
+    ?>
+</div>
+</span>
+</a>
+        </div>
 
     <!-- RIGHT -->
     <div class="topbar-right">
@@ -23,19 +34,6 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="notif-icon" onclick="toggleNotif()">
             <i class="fa fa-bell"></i>
             <span class="badge">3</span>
-        </div>
-
-        <!-- Profile Dropdown -->
-        <div class="profile" onclick="toggleProfile()">
-            <i class="fa fa-user-circle"></i>
-            <span><?= htmlspecialchars($_SESSION['user']) ?></span>
-            <i class="fa fa-caret-down"></i>
-
-            <div class="dropdown-menu" id="profileMenu">
-                <a href="#"><i class="fa fa-user"></i> My Profile</a>
-                <a href="#"><i class="fa fa-cog"></i> Settings</a>
-                <a href="logout.php"><i class="fa fa-sign-out-alt"></i> Logout</a>
-            </div>
         </div>
 
     </div>
