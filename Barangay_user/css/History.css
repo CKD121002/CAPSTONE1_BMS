@@ -1,0 +1,98 @@
+/* HISTORY PAGE */
+.historybg {
+  background-color: #f4f7f9;
+}
+
+.historytitle {
+  color: #3b62d1;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.filtercontainer {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.filterbtn {
+  background: #3f51b5;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.filterbtn.active {
+  background: #002244;
+}
+
+.historygrid {
+  display: grid;
+  /* This automatically fills the row and stretches cards to fit */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%; /* Ensure it spans the full container */
+}
+
+.historycard {
+  background: white;
+  border: 1px solid #ddd; /* Lightened the border slightly for a cleaner look */
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Removed fixed width: 300px; */
+}
+
+.cardheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.cardheader h3 {
+  color: #3f51b5;
+  font-size: 18px;
+  max-width: 60%;
+}
+
+.cardbody p {
+  color: #333;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+/* STATUS */
+.complete {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: #4caf50;
+}
+
+.pending {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ffc107;
+  color: #333;
+}
+
+.cancelled {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: #f44336;
+}
